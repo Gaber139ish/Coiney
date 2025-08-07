@@ -1,0 +1,7 @@
+// Rs-ai integration stub for Coiney
+
+func check_balance(user) {
+  if coiney.balance(user) > 1000 {
+    unlock RsAI.super_tools
+  }
+}
