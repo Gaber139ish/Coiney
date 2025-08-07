@@ -1,0 +1,54 @@
+# Build artifacts
+/build/
+/src/obj/
+/src/bin/
+/*.exe
+/*.dll
+/*.so
+/*.dylib
+/*.o
+/*.obj
+
+# Autotools
+/config.cache
+/config.log
+/config.status
+/Makefile
+/autom4te.cache/
+/install-sh
+/depcomp
+/compile
+
+# Editor/IDE files
+*.swp
+*.swo
+*.DS_Store
+*.vscode/
+.idea/
+*.iml
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# GitHub Actions
+.github/workflows/*.yml
+
+# Terminals and temp files
+*.tmp
+*.bak
+*~
+
+# Node modules (if any web stuff)
+node_modules/
+
+# Website builds (if static generators used)
+_public/
+_dist/
+
+# Misc
+*.pid
