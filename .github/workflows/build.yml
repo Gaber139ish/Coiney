@@ -1,0 +1,36 @@
+name: Build Coiney
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev libboost-all-dev libminiupnpc-dev libzmq3-dev git curl cmake
+
+      - name: Run autogen.sh
+        run: ./autogen.sh
+
+      - name: Configure build
+        run: ./configure --without-gui --disable-tests
+
+      - name: Build
+        run: make -j$(nproc)
+
+      - name: Verify build
+        run: |
+          if [ ! -f src/coineyd ]; then
+            echo "Build failed: coineyd binary missing"
+            exit 1
+          fi
+          echo "Build successful"
